@@ -1,3 +1,4 @@
+import { defineChain } from "viem";
 import * as chains from "viem/chains";
 
 export type ScaffoldConfig = {
@@ -8,9 +9,39 @@ export type ScaffoldConfig = {
   onlyLocalBurnerWallet: boolean;
 };
 
+// const linea_tesnet = defineChain({
+//   id: 59141,
+//   name: "Linea Sepolia",
+//   nativeCurrency: {
+//     decimals: 18,
+//     name: "ETH",
+//     symbol: "ETH",
+//   },
+//   rpcUrls: {
+//     default: { http: ["https://linea-sepolia-rpc.publicnode.com"] },
+//     public: { http: ["https://linea-sepolia-rpc.publicnode.com"] },
+//   },
+//   blockExplorers: { default: { url: "https://sepolia.lineascan.build", name: "Linea Sepolia explorer" } },
+//   network: "AIA Testnet",
+// });
+const aia_tesnet = defineChain({
+  id: 1320,
+  name: "AIA Testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "AIA",
+    symbol: "AIA",
+  },
+  rpcUrls: {
+    default: { http: ["https://aia-dataseed1-testnet.aiachain.org"] },
+    public: { http: ["https://aia-dataseed1-testnet.aiachain.org"] },
+  },
+  blockExplorers: { default: { url: "https://testnet.aiascan.com", name: "AIA Testnet explorer" } },
+  network: "AIA Testnet",
+});
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [chains.hardhat],
+  targetNetworks: [aia_tesnet],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)

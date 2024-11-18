@@ -2,82 +2,142 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 // Useful for debugging. Remove when deploying to a live network.
+import { VRFConsumerBaseV2Plus } from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
+import { VRFV2PlusClient } from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 import "hardhat/console.sol";
-
-// Use openzeppelin to inherit battle-tested implementations (ERC20, ERC721, etc)
-// import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * A smart contract that allows changing a state variable of the contract and tracking the changes
  * It also allows the owner to withdraw the Ether in the contract
- * @author BuidlGuidl
+ * @author luohanxiong
  */
 contract YourContract {
 	// State Variables
-	address public immutable owner;
-	string public greeting = "Building Unstoppable Apps!!!";
-	bool public premium = false;
-	uint256 public totalCounter = 0;
-	mapping(address => uint) public userGreetingCounter;
+	address private immutable owner;
+	address[] public winnerAddress;
+	// 确定的数组
+	uint256[] public numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	// min price
+	uint256 public minimumPrice = 0.0001 ether;
+	uint256 public minimumParticipantNumber = 2;
+	uint256 public participantNumber;
+	// address -> selected number
+	mapping(address => uint256[]) public lotteryMap;
+	// lotteryMap's address
+	address[] public addressKeysArray;
+	address[] public participantAddress;
+	uint256 public winnerNumber;
+	uint256 bonus;
 
-	// Events: a way to emit log statements from smart contract that can be listened to by external parties
-	event GreetingChange(
-		address indexed greetingSetter,
-		string newGreeting,
-		bool premium,
-		uint256 value
-	);
-
-	// Constructor: Called once on contract deployment
-	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
-	constructor(address _owner) {
-		owner = _owner;
+	constructor() {
+		owner = msg.sender;
 	}
 
-	// Modifier: used to define a set of rules that must be met before or after a function is executed
-	// Check the withdraw() function
+	function setBouns() internal {
+		bonus = address(this).balance;
+	}
+
+	// record the address key
+	function setKeyValue(
+		address payable key,
+		uint256[] memory value,
+		bool isFirstBuy
+	) internal {
+		if (isFirstBuy) {
+			lotteryMap[key] = value;
+			addressKeysArray.push(key);
+		} else {
+			uint256[] memory oldValue = lotteryMap[key];
+			uint256[] memory newValue = new uint256[](
+				oldValue.length + value.length
+			);
+			for (uint i = 0; i < oldValue.length; i++) {
+				newValue[i] = oldValue[i];
+			}
+			lotteryMap[key] = newValue;
+		}
+	}
+
+	function getRandomNumber() internal returns (uint256) {
+		uint256 tempNumber = uint256(
+			keccak256(
+				abi.encodePacked(
+					block.prevrandao,
+					block.timestamp,
+					participantNumber
+				)
+			)
+		) % 10;
+		winnerNumber = tempNumber;
+		return tempNumber;
+	}
+
+	function checkIsFirstBuy(address ars) internal view returns (bool) {
+		for (uint i = 0; i < addressKeysArray.length; i++) {
+			if (addressKeysArray[i] == ars) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// participate the lottery
+	function participate(uint256[] memory selectedNumber) public payable {
+		require(
+			msg.value >= minimumPrice * selectedNumber.length,
+			"insufficient Ether value sent"
+		);
+		// check if the address is the first time to buy
+		bool isFirstBuy = checkIsFirstBuy(msg.sender);
+		if (isFirstBuy) {
+			participantAddress.push(msg.sender);
+			participantNumber++;
+		}
+		setKeyValue(payable(msg.sender), selectedNumber, isFirstBuy);
+		setBouns();
+	}
+
+	function testGetWinnerNumber() public {
+		getRandomNumber();
+	}
+
+	// only contract owner can start select the winner
+	function selectWinner() public isOwner {
+		require(
+			participantNumber >= minimumParticipantNumber,
+			"insufficient participant"
+		);
+		uint256 number = getRandomNumber();
+		for (uint i = 0; i < addressKeysArray.length; i++) {
+			uint256[] memory numberArray = lotteryMap[addressKeysArray[i]];
+			for (uint j = 0; j < numberArray.length; j++) {
+				if (numberArray[j] == number) {
+					winnerAddress.push(addressKeysArray[i]);
+				}
+			}
+		}
+	}
+
 	modifier isOwner() {
 		// msg.sender: predefined variable that represents address of the account that called the current function
 		require(msg.sender == owner, "Not the Owner");
 		_;
 	}
 
-	/**
-	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
-	 *
-	 * @param _newGreeting (string memory) - new greeting to save on the contract
-	 */
-	function setGreeting(string memory _newGreeting) public payable {
-		// Print data to the hardhat chain console. Remove when deploying to a live network.
-		console.log(
-			"Setting new greeting '%s' from %s",
-			_newGreeting,
-			msg.sender
-		);
-
-		// Change state variables
-		greeting = _newGreeting;
-		totalCounter += 1;
-		userGreetingCounter[msg.sender] += 1;
-
-		// msg.value: built-in global variable that represents the amount of ether sent with the transaction
-		if (msg.value > 0) {
-			premium = true;
-		} else {
-			premium = false;
+	// transfer the funds to the winner
+	function transferFunds() public isOwner {
+		require(address(this).balance > 0, "Insufficient contract balance");
+		require(winnerAddress.length > 0, "No winner");
+		uint256 winnerAddressLength = winnerAddress.length;
+		uint256 transferAmount = address(this).balance / winnerAddressLength;
+		for (uint256 i = 0; i < winnerAddress.length; i++) {
+			payable(winnerAddress[i]).transfer(transferAmount);
 		}
-
-		// emit: keyword used to trigger an event
-		emit GreetingChange(msg.sender, _newGreeting, msg.value > 0, msg.value);
 	}
 
-	/**
-	 * Function that allows the owner to withdraw all the Ether in the contract
-	 * The function can only be called by the owner of the contract as defined by the isOwner modifier
-	 */
 	function withdraw() public isOwner {
-		(bool success, ) = owner.call{ value: address(this).balance }("");
-		require(success, "Failed to send Ether");
+		require(address(this).balance > 0, "Insufficient contract balance");
+		payable(owner).transfer(address(this).balance);
 	}
 
 	/**
