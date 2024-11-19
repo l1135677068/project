@@ -144,4 +144,33 @@ contract YourContract {
 	 * Function that allows the contract to receive ETH
 	 */
 	receive() external payable {}
+
+	// return the variable
+	function getOwner() public view returns (address) {
+		return owner;
+	}
+
+	function getBonus() public view returns (uint256) {
+		return bonus;
+	}
+
+	function getParticipantAddress() public view returns (address[] memory) {
+		return participantAddress;
+	}
+
+	function getParticipantNumber() public view returns (uint256) {
+		return participantNumber;
+	}
+
+	function getLotteryMap(address key) public view returns (uint256[] memory) {
+		return lotteryMap[key];
+	}
+
+	function getAddressKeysArray() public view returns (address[] memory) {
+		return addressKeysArray;
+	}
+
+	function getWinnerNumber() public view returns (uint256) {
+		return winnerNumber;
+	}
 }
