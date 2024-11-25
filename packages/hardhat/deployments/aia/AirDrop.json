@@ -1,0 +1,180 @@
+{
+  "address": "0xf46904E62cE564638692BB3e5c63707E00aa99AD",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "addAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSum",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "multiTransferToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "s_transferAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "s_transferTokenAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x9c1fff7671a0a27051869da3954cf06630a510e21b24327229bcb097bfe1cc48",
+  "receipt": {
+    "to": null,
+    "from": "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    "contractAddress": "0xf46904E62cE564638692BB3e5c63707E00aa99AD",
+    "transactionIndex": 0,
+    "gasUsed": "350223",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xbd5c2098bae9c8bc9a129ce0a09c0f6b18a0e17c54ab33cb67fa401e9249c69c",
+    "transactionHash": "0x9c1fff7671a0a27051869da3954cf06630a510e21b24327229bcb097bfe1cc48",
+    "logs": [],
+    "blockNumber": 36694966,
+    "cumulativeGasUsed": "350223",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x59e144DE9B86795AB8eB8F4211744Ff97E5BC21e"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "3f4aa865459d9b8b8f0ed0849a9fe19a",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"addAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"multiTransferToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_transferAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_transferTokenAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/AirDrop.sol\":\"AirDrop\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n\\t/**\\n\\t * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n\\t * another (`to`).\\n\\t *\\n\\t * Note that `value` may be zero.\\n\\t */\\n\\tevent Transfer(address indexed from, address indexed to, uint256 value);\\n\\n\\t/**\\n\\t * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n\\t * a call to {approve}. `value` is the new allowance.\\n\\t */\\n\\tevent Approval(\\n\\t\\taddress indexed owner,\\n\\t\\taddress indexed spender,\\n\\t\\tuint256 value\\n\\t);\\n\\n\\t/**\\n\\t * @dev Returns the value of tokens in existence.\\n\\t */\\n\\tfunction totalSupply() external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Returns the value of tokens owned by `account`.\\n\\t */\\n\\tfunction balanceOf(address account) external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * Emits a {Transfer} event.\\n\\t */\\n\\tfunction transfer(address to, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @dev Returns the remaining number of tokens that `spender` will be\\n\\t * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n\\t * zero by default.\\n\\t *\\n\\t * This value changes when {approve} or {transferFrom} are called.\\n\\t */\\n\\tfunction allowance(\\n\\t\\taddress owner,\\n\\t\\taddress spender\\n\\t) external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n\\t * caller's tokens.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n\\t * that someone may use both the old and the new allowance by unfortunate\\n\\t * transaction ordering. One possible solution to mitigate this race\\n\\t * condition is to first reduce the spender's allowance to 0 and set the\\n\\t * desired value afterwards:\\n\\t * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n\\t *\\n\\t * Emits an {Approval} event.\\n\\t */\\n\\tfunction approve(address spender, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n\\t * allowance mechanism. `value` is then deducted from the caller's\\n\\t * allowance.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * Emits a {Transfer} event.\\n\\t */\\n\\tfunction transferFrom(\\n\\t\\taddress from,\\n\\t\\taddress to,\\n\\t\\tuint256 value\\n\\t) external returns (bool);\\n}\\n\",\"keccak256\":\"0xf47105c9918dc8c05e4cef927a186292f742eac08d1efa484dc5f0de203cb151\",\"license\":\"MIT\"},\"contracts/AirDrop.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\ncontract AirDrop {\\n\\taddress[] public s_transferAddress;\\n\\tuint256[] public s_transferTokenAmount;\\n\\taddress public tokenContract;\\n\\n\\tconstructor(address tokenAddress) {\\n\\t\\ttokenContract = tokenAddress;\\n\\t}\\n\\n\\tfunction getSum() public view returns (uint256) {\\n\\t\\tuint256 sum = 0;\\n\\t\\tfor (uint256 i = 0; i < s_transferTokenAmount.length; i++) {\\n\\t\\t\\tsum += s_transferTokenAmount[i];\\n\\t\\t}\\n\\t\\treturn sum;\\n\\t}\\n\\n\\tfunction addAddress() public {\\n\\t\\ts_transferAddress.push(msg.sender);\\n\\t\\ts_transferTokenAmount.push(100);\\n\\t}\\n\\n\\tfunction multiTransferToken() public {\\n\\t\\trequire(\\n\\t\\t\\ts_transferAddress.length == s_transferTokenAmount.length,\\n\\t\\t\\t\\\"length not equal\\\"\\n\\t\\t);\\n\\t\\tIERC20 token = IERC20(tokenContract);\\n\\t\\tuint256 sumToken = getSum();\\n\\t\\trequire(\\n\\t\\t\\ttoken.allowance(msg.sender, address(this)) >= sumToken,\\n\\t\\t\\t\\\"allowance not enough\\\"\\n\\t\\t);\\n\\n\\t\\tfor (uint256 i = 0; i < s_transferAddress.length; i++) {\\n\\t\\t\\ttoken.transferFrom(\\n\\t\\t\\t\\tmsg.sender,\\n\\t\\t\\t\\ts_transferAddress[i],\\n\\t\\t\\t\\ts_transferTokenAmount[i]\\n\\t\\t\\t);\\n\\t\\t}\\n\\t}\\n}\\n\",\"keccak256\":\"0x98cc8025feac64e9f29b07de7b86ca36253d760322de96ae54a2a1c86eb6ca3d\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161058138038061058183398101604081905261002f91610054565b600280546001600160a01b0319166001600160a01b0392909216919091179055610084565b60006020828403121561006657600080fd5b81516001600160a01b038116811461007d57600080fd5b9392505050565b6104ee806100936000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c80630ee969531461006757806355a373d6146100dd578063569c5f6d1461010d578063641bd719146101235780639591960a1461012b578063eaa105e61461013e575b600080fd5b6100db60008054600181810183557f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e56390910180546001600160a01b0319163317905580548082018255915260647fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf690910155565b005b6002546100f0906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b610115610151565b604051908152602001610104565b6100db6101a3565b6101156101393660046103ff565b6103b4565b6100f061014c3660046103ff565b6103d5565b600080805b60015481101561019d576001818154811061017357610173610418565b9060005260206000200154826101899190610444565b9150806101958161045d565b915050610156565b50919050565b600154600054146101ee5760405162461bcd60e51b815260206004820152601060248201526f1b195b99dd1a081b9bdd08195c5d585b60821b60448201526064015b60405180910390fd5b6002546001600160a01b03166000610204610151565b604051636eb1769f60e11b815233600482015230602482015290915081906001600160a01b0384169063dd62ed3e90604401602060405180830381865afa158015610253573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102779190610476565b10156102bc5760405162461bcd60e51b81526020600482015260146024820152730c2d8d8deeec2dcc6ca40dcdee840cadcdeeaced60631b60448201526064016101e5565b60005b6000548110156103af57826001600160a01b03166323b872dd33600084815481106102ec576102ec610418565b600091825260209091200154600180546001600160a01b03909216918690811061031857610318610418565b6000918252602090912001546040516001600160e01b031960e086901b1681526001600160a01b03938416600482015292909116602483015260448201526064016020604051808303816000875af1158015610378573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061039c919061048f565b50806103a78161045d565b9150506102bf565b505050565b600181815481106103c457600080fd5b600091825260209091200154905081565b600081815481106103e557600080fd5b6000918252602090912001546001600160a01b0316905081565b60006020828403121561041157600080fd5b5035919050565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b808201808211156104575761045761042e565b92915050565b60006001820161046f5761046f61042e565b5060010190565b60006020828403121561048857600080fd5b5051919050565b6000602082840312156104a157600080fd5b815180151581146104b157600080fd5b939250505056fea26469706673582212205ca4f292be587c0ca951d8c536b9a4b6db4e3112f58e91c307bb81b9030074f464736f6c63430008140033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c80630ee969531461006757806355a373d6146100dd578063569c5f6d1461010d578063641bd719146101235780639591960a1461012b578063eaa105e61461013e575b600080fd5b6100db60008054600181810183557f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e56390910180546001600160a01b0319163317905580548082018255915260647fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf690910155565b005b6002546100f0906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b610115610151565b604051908152602001610104565b6100db6101a3565b6101156101393660046103ff565b6103b4565b6100f061014c3660046103ff565b6103d5565b600080805b60015481101561019d576001818154811061017357610173610418565b9060005260206000200154826101899190610444565b9150806101958161045d565b915050610156565b50919050565b600154600054146101ee5760405162461bcd60e51b815260206004820152601060248201526f1b195b99dd1a081b9bdd08195c5d585b60821b60448201526064015b60405180910390fd5b6002546001600160a01b03166000610204610151565b604051636eb1769f60e11b815233600482015230602482015290915081906001600160a01b0384169063dd62ed3e90604401602060405180830381865afa158015610253573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102779190610476565b10156102bc5760405162461bcd60e51b81526020600482015260146024820152730c2d8d8deeec2dcc6ca40dcdee840cadcdeeaced60631b60448201526064016101e5565b60005b6000548110156103af57826001600160a01b03166323b872dd33600084815481106102ec576102ec610418565b600091825260209091200154600180546001600160a01b03909216918690811061031857610318610418565b6000918252602090912001546040516001600160e01b031960e086901b1681526001600160a01b03938416600482015292909116602483015260448201526064016020604051808303816000875af1158015610378573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061039c919061048f565b50806103a78161045d565b9150506102bf565b505050565b600181815481106103c457600080fd5b600091825260209091200154905081565b600081815481106103e557600080fd5b6000918252602090912001546001600160a01b0316905081565b60006020828403121561041157600080fd5b5035919050565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b808201808211156104575761045761042e565b92915050565b60006001820161046f5761046f61042e565b5060010190565b60006020828403121561048857600080fd5b5051919050565b6000602082840312156104a157600080fd5b815180151581146104b157600080fd5b939250505056fea26469706673582212205ca4f292be587c0ca951d8c536b9a4b6db4e3112f58e91c307bb81b9030074f464736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 83,
+        "contract": "contracts/AirDrop.sol:AirDrop",
+        "label": "s_transferAddress",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 86,
+        "contract": "contracts/AirDrop.sol:AirDrop",
+        "label": "s_transferTokenAmount",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_array(t_uint256)dyn_storage"
+      },
+      {
+        "astId": 88,
+        "contract": "contracts/AirDrop.sol:AirDrop",
+        "label": "tokenContract",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
