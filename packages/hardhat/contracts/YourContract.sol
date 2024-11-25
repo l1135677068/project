@@ -29,6 +29,8 @@ contract YourContract {
 	uint256 public winnerNumber;
 	uint256 bonus;
 
+	event ReceiveEth(address ads, uint256 value);
+
 	constructor() {
 		owner = msg.sender;
 	}
@@ -143,7 +145,9 @@ contract YourContract {
 	/**
 	 * Function that allows the contract to receive ETH
 	 */
-	receive() external payable {}
+	receive() external payable {
+		emit ReceiveEth(msg.sender, msg.value);
+	}
 
 	// return the variable
 	function getOwner() public view returns (address) {

@@ -30,6 +30,33 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
+  await deploy("Receive", {
+    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+  await deploy("MyToken", {
+    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+  await deploy("Faucet", {
+    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    // Contract constructor arguments
+    args: ["0x59e144DE9B86795AB8eB8F4211744Ff97E5BC21e"],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
 };
 
 export default deployYourContract;
