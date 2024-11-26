@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   1320: {
     A: {
-      address: "0x198699270404Ac71b4B881D4840Ba86641baaEf8",
+      address: "0xdFB5beE50B4D87cC65F1Ef9c7b87A09a9D540730",
       abi: [
         {
           inputs: [],
@@ -37,7 +37,7 @@ const deployedContracts = {
           ],
           name: "callSetNumber",
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -55,7 +55,7 @@ const deployedContracts = {
           ],
           name: "delegatecallSetNumber",
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -225,6 +225,56 @@ const deployedContracts = {
       ],
       inheritedFunctions: {},
     },
+    Caller: {
+      address: "0x49365909a1F6518f9058B6AfCc6b4fB75637f8f4",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_proxy",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "increment",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "proxy",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "value",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
     Faucet: {
       address: "0xbBE236575aDc57A373E9168A83F8306dbFaf7577",
       abi: [
@@ -286,6 +336,57 @@ const deployedContracts = {
               internalType: "address",
               name: "",
               type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Logic: {
+      address: "0x6b8AcB313683B03ED861Cd3504BAfe8001710818",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [],
+          name: "CallSuccess",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "implemention",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "increment",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "x",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
             },
           ],
           stateMutability: "view",
@@ -640,6 +741,63 @@ const deployedContracts = {
         transfer: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         transferFrom: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       },
+    },
+    Proxy: {
+      address: "0x86c66D19b87351c1AD7125889Bcb382f5baFABc7",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_implemention",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [],
+          name: "CallSuccess",
+          type: "event",
+        },
+        {
+          stateMutability: "payable",
+          type: "fallback",
+        },
+        {
+          inputs: [],
+          name: "implementation",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "x",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {},
     },
     Receive: {
       address: "0x4fae89803E7CcEdc28f6bAeA7Eb5aeD876Ec78C5",

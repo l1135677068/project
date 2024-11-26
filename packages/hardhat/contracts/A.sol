@@ -7,11 +7,13 @@ contract A {
 	uint256 public _num;
 
 	function callSetNumber(address contrt, uint256 number) external {
-		contrt.call(abi.encodeWithSignature("setNumber(uint256)", number));
+		contrt.call{ gas: 10000000 }(
+			abi.encodeWithSignature("setNumber(uint256)", number)
+		);
 	}
 
 	function delegatecallSetNumber(address contrt, uint256 number) external {
-		contrt.delegatecall(
+		contrt.delegatecall{ gas: 10000000 }(
 			abi.encodeWithSignature("setNumber(uint256)", number)
 		);
 	}

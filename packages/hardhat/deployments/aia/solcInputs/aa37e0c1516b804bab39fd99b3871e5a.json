@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\n\npragma solidity ^0.8.20;\n\n/**\n * @dev Interface of the ERC20 standard as defined in the EIP.\n */\ninterface IERC20 {\n\t/**\n\t * @dev Emitted when `value` tokens are moved from one account (`from`) to\n\t * another (`to`).\n\t *\n\t * Note that `value` may be zero.\n\t */\n\tevent Transfer(address indexed from, address indexed to, uint256 value);\n\n\t/**\n\t * @dev Emitted when the allowance of a `spender` for an `owner` is set by\n\t * a call to {approve}. `value` is the new allowance.\n\t */\n\tevent Approval(\n\t\taddress indexed owner,\n\t\taddress indexed spender,\n\t\tuint256 value\n\t);\n\n\t/**\n\t * @dev Returns the value of tokens in existence.\n\t */\n\tfunction totalSupply() external view returns (uint256);\n\n\t/**\n\t * @dev Returns the value of tokens owned by `account`.\n\t */\n\tfunction balanceOf(address account) external view returns (uint256);\n\n\t/**\n\t * @dev Moves a `value` amount of tokens from the caller's account to `to`.\n\t *\n\t * Returns a boolean value indicating whether the operation succeeded.\n\t *\n\t * Emits a {Transfer} event.\n\t */\n\tfunction transfer(address to, uint256 value) external returns (bool);\n\n\t/**\n\t * @dev Returns the remaining number of tokens that `spender` will be\n\t * allowed to spend on behalf of `owner` through {transferFrom}. This is\n\t * zero by default.\n\t *\n\t * This value changes when {approve} or {transferFrom} are called.\n\t */\n\tfunction allowance(\n\t\taddress owner,\n\t\taddress spender\n\t) external view returns (uint256);\n\n\t/**\n\t * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\n\t * caller's tokens.\n\t *\n\t * Returns a boolean value indicating whether the operation succeeded.\n\t *\n\t * IMPORTANT: Beware that changing an allowance with this method brings the risk\n\t * that someone may use both the old and the new allowance by unfortunate\n\t * transaction ordering. One possible solution to mitigate this race\n\t * condition is to first reduce the spender's allowance to 0 and set the\n\t * desired value afterwards:\n\t * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n\t *\n\t * Emits an {Approval} event.\n\t */\n\tfunction approve(address spender, uint256 value) external returns (bool);\n\n\t/**\n\t * @dev Moves a `value` amount of tokens from `from` to `to` using the\n\t * allowance mechanism. `value` is then deducted from the caller's\n\t * allowance.\n\t *\n\t * Returns a boolean value indicating whether the operation succeeded.\n\t *\n\t * Emits a {Transfer} event.\n\t */\n\tfunction transferFrom(\n\t\taddress from,\n\t\taddress to,\n\t\tuint256 value\n\t) external returns (bool);\n}\n"
+    },
+    "contracts/Proxy.sol": {
+      "content": "//SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\nimport \"@openzeppelin/contracts/token/ERC20/IERC20.sol\";\n\ncontract Proxy {\n\taddress public implementation;\n\tuint256 public x;\n\tevent CallSuccess();\n\n\tconstructor(address _implemention) {\n\t\timplementation = _implemention;\n\t}\n\n\treceive() external payable {}\n\n\t/**\n\t * @dev 回调函数，将本合约的调用委托给 `implementation` 合约\n\t * 通过assembly，让回调函数也能有返回值\n\t */\n\tfallback() external payable {\n\t\taddress _implementation = implementation;\n\t\tassembly {\n\t\t\t// 将msg.data拷贝到内存里\n\t\t\t// calldatacopy操作码的参数: 内存起始位置，calldata起始位置，calldata长度\n\t\t\tcalldatacopy(0, 0, calldatasize())\n\n\t\t\t// 利用delegatecall调用implementation合约\n\t\t\t// delegatecall操作码的参数：gas, 目标合约地址，input mem起始位置，input mem长度，output area mem起始位置，output area mem长度\n\t\t\t// output area起始位置和长度位置，所以设为0\n\t\t\t// delegatecall成功返回1，失败返回0\n\t\t\tlet result := delegatecall(\n\t\t\t\tgas(),\n\t\t\t\t_implementation,\n\t\t\t\t0,\n\t\t\t\tcalldatasize(),\n\t\t\t\t0,\n\t\t\t\t0\n\t\t\t)\n\n\t\t\t// 将return data拷贝到内存\n\t\t\t// returndata操作码的参数：内存起始位置，returndata起始位置，returndata长度\n\t\t\treturndatacopy(0, 0, returndatasize())\n\n\t\t\tswitch result\n\t\t\t// 如果delegate call失败，revert\n\t\t\tcase 0 {\n\t\t\t\trevert(0, returndatasize())\n\t\t\t}\n\t\t\t// 如果delegate call成功，返回mem起始位置为0，长度为returndatasize()的数据（格式为bytes）\n\t\t\tdefault {\n\t\t\t\treturn(0, returndatasize())\n\t\t\t}\n\t\t}\n\t}\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

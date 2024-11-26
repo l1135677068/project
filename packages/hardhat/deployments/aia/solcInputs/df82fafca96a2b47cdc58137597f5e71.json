@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\n\npragma solidity ^0.8.20;\n\n/**\n * @dev Interface of the ERC20 standard as defined in the EIP.\n */\ninterface IERC20 {\n\t/**\n\t * @dev Emitted when `value` tokens are moved from one account (`from`) to\n\t * another (`to`).\n\t *\n\t * Note that `value` may be zero.\n\t */\n\tevent Transfer(address indexed from, address indexed to, uint256 value);\n\n\t/**\n\t * @dev Emitted when the allowance of a `spender` for an `owner` is set by\n\t * a call to {approve}. `value` is the new allowance.\n\t */\n\tevent Approval(\n\t\taddress indexed owner,\n\t\taddress indexed spender,\n\t\tuint256 value\n\t);\n\n\t/**\n\t * @dev Returns the value of tokens in existence.\n\t */\n\tfunction totalSupply() external view returns (uint256);\n\n\t/**\n\t * @dev Returns the value of tokens owned by `account`.\n\t */\n\tfunction balanceOf(address account) external view returns (uint256);\n\n\t/**\n\t * @dev Moves a `value` amount of tokens from the caller's account to `to`.\n\t *\n\t * Returns a boolean value indicating whether the operation succeeded.\n\t *\n\t * Emits a {Transfer} event.\n\t */\n\tfunction transfer(address to, uint256 value) external returns (bool);\n\n\t/**\n\t * @dev Returns the remaining number of tokens that `spender` will be\n\t * allowed to spend on behalf of `owner` through {transferFrom}. This is\n\t * zero by default.\n\t *\n\t * This value changes when {approve} or {transferFrom} are called.\n\t */\n\tfunction allowance(\n\t\taddress owner,\n\t\taddress spender\n\t) external view returns (uint256);\n\n\t/**\n\t * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\n\t * caller's tokens.\n\t *\n\t * Returns a boolean value indicating whether the operation succeeded.\n\t *\n\t * IMPORTANT: Beware that changing an allowance with this method brings the risk\n\t * that someone may use both the old and the new allowance by unfortunate\n\t * transaction ordering. One possible solution to mitigate this race\n\t * condition is to first reduce the spender's allowance to 0 and set the\n\t * desired value afterwards:\n\t * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n\t *\n\t * Emits an {Approval} event.\n\t */\n\tfunction approve(address spender, uint256 value) external returns (bool);\n\n\t/**\n\t * @dev Moves a `value` amount of tokens from `from` to `to` using the\n\t * allowance mechanism. `value` is then deducted from the caller's\n\t * allowance.\n\t *\n\t * Returns a boolean value indicating whether the operation succeeded.\n\t *\n\t * Emits a {Transfer} event.\n\t */\n\tfunction transferFrom(\n\t\taddress from,\n\t\taddress to,\n\t\tuint256 value\n\t) external returns (bool);\n}\n"
+    },
+    "contracts/Caller.sol": {
+      "content": "//SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\nimport \"@openzeppelin/contracts/token/ERC20/IERC20.sol\";\n\ncontract Caller {\n\taddress public proxy;\n\n\tconstructor(address _proxy) {\n\t\tproxy = _proxy;\n\t}\n\n\tfunction increment() external returns (uint256) {\n\t\t(, bytes memory data) = proxy.call(\n\t\t\tabi.encodeWithSignature(\"increment()\")\n\t\t);\n\t\treturn abi.decode(data, (uint));\n\t}\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
