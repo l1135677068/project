@@ -1,0 +1,131 @@
+{
+  "address": "0x198699270404Ac71b4B881D4840Ba86641baaEf8",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "_num",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "contrt",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "number",
+          "type": "uint256"
+        }
+      ],
+      "name": "callSetNumber",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "contrt",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "number",
+          "type": "uint256"
+        }
+      ],
+      "name": "delegatecallSetNumber",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd546641a750a7fc7f3b39eb776c08ecb8a782deadce43a40d467991c623bffe8",
+  "receipt": {
+    "to": null,
+    "from": "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    "contractAddress": "0x198699270404Ac71b4B881D4840Ba86641baaEf8",
+    "transactionIndex": 0,
+    "gasUsed": "195313",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x087d9f01d6142a173181d8fcb647115898b8fc0a99c508805e4ae3bca563f902",
+    "transactionHash": "0xd546641a750a7fc7f3b39eb776c08ecb8a782deadce43a40d467991c623bffe8",
+    "logs": [],
+    "blockNumber": 36727036,
+    "cumulativeGasUsed": "195313",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 2,
+  "solcInputHash": "a7962321ebfd2f9b0ed6b3e1828e2b27",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"_num\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"contrt\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"callSetNumber\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"contrt\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"delegatecallSetNumber\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/A.sol\":\"A\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n\\t/**\\n\\t * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n\\t * another (`to`).\\n\\t *\\n\\t * Note that `value` may be zero.\\n\\t */\\n\\tevent Transfer(address indexed from, address indexed to, uint256 value);\\n\\n\\t/**\\n\\t * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n\\t * a call to {approve}. `value` is the new allowance.\\n\\t */\\n\\tevent Approval(\\n\\t\\taddress indexed owner,\\n\\t\\taddress indexed spender,\\n\\t\\tuint256 value\\n\\t);\\n\\n\\t/**\\n\\t * @dev Returns the value of tokens in existence.\\n\\t */\\n\\tfunction totalSupply() external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Returns the value of tokens owned by `account`.\\n\\t */\\n\\tfunction balanceOf(address account) external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * Emits a {Transfer} event.\\n\\t */\\n\\tfunction transfer(address to, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @dev Returns the remaining number of tokens that `spender` will be\\n\\t * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n\\t * zero by default.\\n\\t *\\n\\t * This value changes when {approve} or {transferFrom} are called.\\n\\t */\\n\\tfunction allowance(\\n\\t\\taddress owner,\\n\\t\\taddress spender\\n\\t) external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n\\t * caller's tokens.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n\\t * that someone may use both the old and the new allowance by unfortunate\\n\\t * transaction ordering. One possible solution to mitigate this race\\n\\t * condition is to first reduce the spender's allowance to 0 and set the\\n\\t * desired value afterwards:\\n\\t * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n\\t *\\n\\t * Emits an {Approval} event.\\n\\t */\\n\\tfunction approve(address spender, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n\\t * allowance mechanism. `value` is then deducted from the caller's\\n\\t * allowance.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * Emits a {Transfer} event.\\n\\t */\\n\\tfunction transferFrom(\\n\\t\\taddress from,\\n\\t\\taddress to,\\n\\t\\tuint256 value\\n\\t) external returns (bool);\\n}\\n\",\"keccak256\":\"0xf47105c9918dc8c05e4cef927a186292f742eac08d1efa484dc5f0de203cb151\",\"license\":\"MIT\"},\"contracts/A.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\ncontract A {\\n\\taddress public owner;\\n\\tuint256 public _num;\\n\\n\\tfunction callSetNumber(address contrt, uint256 number) external payable {\\n\\t\\tcontrt.call(abi.encodeWithSignature(\\\"setNumber(uint256)\\\", number));\\n\\t}\\n\\n\\tfunction delegatecallSetNumber(\\n\\t\\taddress contrt,\\n\\t\\tuint256 number\\n\\t) external payable {\\n\\t\\tcontrt.delegatecall(\\n\\t\\t\\tabi.encodeWithSignature(\\\"setNumber(uint256)\\\", number)\\n\\t\\t);\\n\\t}\\n}\\n\",\"keccak256\":\"0x3c0608dd038a1c50267b177a68fbdc58e4c757f325f313fbaafc8cd6bfb3180e\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610292806100206000396000f3fe60806040526004361061003f5760003560e01c80638da5cb5b1461004457806398a0a71c14610081578063b3d797b114610096578063d68cfc14146100a9575b600080fd5b34801561005057600080fd5b50600054610064906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b61009461008f3660046101f5565b6100cd565b005b6100946100a43660046101f5565b610168565b3480156100b557600080fd5b506100bf60015481565b604051908152602001610078565b816001600160a01b0316816040516024016100ea91815260200190565b60408051601f198184030181529181526020820180516001600160e01b0316633fb5c1cb60e01b1790525161011f919061022d565b6000604051808303816000865af19150503d806000811461015c576040519150601f19603f3d011682016040523d82523d6000602084013e610161565b606091505b5050505050565b816001600160a01b03168160405160240161018591815260200190565b60408051601f198184030181529181526020820180516001600160e01b0316633fb5c1cb60e01b179052516101ba919061022d565b600060405180830381855af49150503d806000811461015c576040519150601f19603f3d011682016040523d82523d6000602084013e610161565b6000806040838503121561020857600080fd5b82356001600160a01b038116811461021f57600080fd5b946020939093013593505050565b6000825160005b8181101561024e5760208186018101518583015201610234565b50600092019182525091905056fea264697066735822122082105870b50eb4716ceef53a3e08025e315b064cda510969cd8cf3711ecb847464736f6c63430008140033",
+  "deployedBytecode": "0x60806040526004361061003f5760003560e01c80638da5cb5b1461004457806398a0a71c14610081578063b3d797b114610096578063d68cfc14146100a9575b600080fd5b34801561005057600080fd5b50600054610064906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b61009461008f3660046101f5565b6100cd565b005b6100946100a43660046101f5565b610168565b3480156100b557600080fd5b506100bf60015481565b604051908152602001610078565b816001600160a01b0316816040516024016100ea91815260200190565b60408051601f198184030181529181526020820180516001600160e01b0316633fb5c1cb60e01b1790525161011f919061022d565b6000604051808303816000865af19150503d806000811461015c576040519150601f19603f3d011682016040523d82523d6000602084013e610161565b606091505b5050505050565b816001600160a01b03168160405160240161018591815260200190565b60408051601f198184030181529181526020820180516001600160e01b0316633fb5c1cb60e01b179052516101ba919061022d565b600060405180830381855af49150503d806000811461015c576040519150601f19603f3d011682016040523d82523d6000602084013e610161565b6000806040838503121561020857600080fd5b82356001600160a01b038116811461021f57600080fd5b946020939093013593505050565b6000825160005b8181101561024e5760208186018101518583015201610234565b50600092019182525091905056fea264697066735822122082105870b50eb4716ceef53a3e08025e315b064cda510969cd8cf3711ecb847464736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 82,
+        "contract": "contracts/A.sol:A",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 84,
+        "contract": "contracts/A.sol:A",
+        "label": "_num",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

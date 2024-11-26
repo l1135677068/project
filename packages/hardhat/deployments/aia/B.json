@@ -1,0 +1,119 @@
+{
+  "address": "0x37c5D0ebBc7e6000BEdB1e9900Cb43AeE38907FB",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pay",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "number",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNumber",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0xf1c288036be4bcc75adf9856c597f8d66ba0ad079141e01c0f979f25af7c0ca5",
+  "receipt": {
+    "to": null,
+    "from": "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    "contractAddress": "0x37c5D0ebBc7e6000BEdB1e9900Cb43AeE38907FB",
+    "transactionIndex": 0,
+    "gasUsed": "111925",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8188cc63ac25fe5e2c67bbef934c9284aa709b1fc2a3f12105e11716c21693cf",
+    "transactionHash": "0xf1c288036be4bcc75adf9856c597f8d66ba0ad079141e01c0f979f25af7c0ca5",
+    "logs": [],
+    "blockNumber": 36728866,
+    "cumulativeGasUsed": "111925",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 4,
+  "solcInputHash": "a53657ef04c2a0beaaa601ad46de9fe5",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pay\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"setNumber\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/B.sol\":\"B\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n\\t/**\\n\\t * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n\\t * another (`to`).\\n\\t *\\n\\t * Note that `value` may be zero.\\n\\t */\\n\\tevent Transfer(address indexed from, address indexed to, uint256 value);\\n\\n\\t/**\\n\\t * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n\\t * a call to {approve}. `value` is the new allowance.\\n\\t */\\n\\tevent Approval(\\n\\t\\taddress indexed owner,\\n\\t\\taddress indexed spender,\\n\\t\\tuint256 value\\n\\t);\\n\\n\\t/**\\n\\t * @dev Returns the value of tokens in existence.\\n\\t */\\n\\tfunction totalSupply() external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Returns the value of tokens owned by `account`.\\n\\t */\\n\\tfunction balanceOf(address account) external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * Emits a {Transfer} event.\\n\\t */\\n\\tfunction transfer(address to, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @dev Returns the remaining number of tokens that `spender` will be\\n\\t * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n\\t * zero by default.\\n\\t *\\n\\t * This value changes when {approve} or {transferFrom} are called.\\n\\t */\\n\\tfunction allowance(\\n\\t\\taddress owner,\\n\\t\\taddress spender\\n\\t) external view returns (uint256);\\n\\n\\t/**\\n\\t * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n\\t * caller's tokens.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n\\t * that someone may use both the old and the new allowance by unfortunate\\n\\t * transaction ordering. One possible solution to mitigate this race\\n\\t * condition is to first reduce the spender's allowance to 0 and set the\\n\\t * desired value afterwards:\\n\\t * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n\\t *\\n\\t * Emits an {Approval} event.\\n\\t */\\n\\tfunction approve(address spender, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n\\t * allowance mechanism. `value` is then deducted from the caller's\\n\\t * allowance.\\n\\t *\\n\\t * Returns a boolean value indicating whether the operation succeeded.\\n\\t *\\n\\t * Emits a {Transfer} event.\\n\\t */\\n\\tfunction transferFrom(\\n\\t\\taddress from,\\n\\t\\taddress to,\\n\\t\\tuint256 value\\n\\t) external returns (bool);\\n}\\n\",\"keccak256\":\"0xf47105c9918dc8c05e4cef927a186292f742eac08d1efa484dc5f0de203cb151\",\"license\":\"MIT\"},\"contracts/B.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\ncontract B {\\n\\taddress private owner;\\n\\tuint256 private _num;\\n\\n\\tfunction setNumber(uint256 number) public {\\n\\t\\t_num = number;\\n\\t\\towner = msg.sender;\\n\\t}\\n\\n\\tfunction getNumber() public view returns (uint256) {\\n\\t\\treturn _num;\\n\\t}\\n\\n\\tfunction getOwner() public view returns (address) {\\n\\t\\treturn owner;\\n\\t}\\n\\n\\tfunction pay() public payable {}\\n\\n\\treceive() external payable {}\\n}\\n\",\"keccak256\":\"0x29583df50c95e8085a7a245c12976bd5317036f5c897875d28c7c78241957f60\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061010f806100206000396000f3fe608060405260043610603e5760003560e01c80631b9265b81460495780633fb5c1cb14604b578063893d20e8146079578063f2c9ecd81460a557600080fd5b36604457005b600080fd5b005b348015605657600080fd5b506049606236600460c1565b600155600080546001600160a01b03191633179055565b348015608457600080fd5b506000546040516001600160a01b0390911681526020015b60405180910390f35b34801560b057600080fd5b50600154604051908152602001609c565b60006020828403121560d257600080fd5b503591905056fea2646970667358221220853f5f143a58ac10635cc34feee8bd30731c93188c50775f2fdff811a6f4f71164736f6c63430008140033",
+  "deployedBytecode": "0x608060405260043610603e5760003560e01c80631b9265b81460495780633fb5c1cb14604b578063893d20e8146079578063f2c9ecd81460a557600080fd5b36604457005b600080fd5b005b348015605657600080fd5b506049606236600460c1565b600155600080546001600160a01b03191633179055565b348015608457600080fd5b506000546040516001600160a01b0390911681526020015b60405180910390f35b34801560b057600080fd5b50600154604051908152602001609c565b60006020828403121560d257600080fd5b503591905056fea2646970667358221220853f5f143a58ac10635cc34feee8bd30731c93188c50775f2fdff811a6f4f71164736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 82,
+        "contract": "contracts/B.sol:B",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 84,
+        "contract": "contracts/B.sol:B",
+        "label": "_num",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

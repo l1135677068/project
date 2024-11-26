@@ -6,6 +6,74 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   1320: {
+    A: {
+      address: "0x198699270404Ac71b4B881D4840Ba86641baaEf8",
+      abi: [
+        {
+          inputs: [],
+          name: "_num",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "contrt",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "number",
+              type: "uint256",
+            },
+          ],
+          name: "callSetNumber",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "contrt",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "number",
+              type: "uint256",
+            },
+          ],
+          name: "delegatecallSetNumber",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
     AirDrop: {
       address: "0xf46904E62cE564638692BB3e5c63707E00aa99AD",
       abi: [
@@ -97,6 +165,62 @@ const deployedContracts = {
           ],
           stateMutability: "view",
           type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    B: {
+      address: "0x37c5D0ebBc7e6000BEdB1e9900Cb43AeE38907FB",
+      abi: [
+        {
+          inputs: [],
+          name: "getNumber",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getOwner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "pay",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "number",
+              type: "uint256",
+            },
+          ],
+          name: "setNumber",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
         },
       ],
       inheritedFunctions: {},
