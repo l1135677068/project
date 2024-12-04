@@ -1,5 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
+import { verify } from "../utils/verify";
 
 /**
  * Deploys a contract named "YourContract" using the deployer account and
@@ -75,7 +76,16 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //   // automatically mining the contract deployment transaction. There is no effect on live networks.
   //   autoMine: true,
   // });
-  await deploy("A", {
+  // await deploy("A", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: [],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+  await deploy("YourToken", {
     from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
     // Contract constructor arguments
     args: [],
@@ -84,7 +94,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
-  await deploy("B", {
+  await deploy("MultiCall", {
     from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
     // Contract constructor arguments
     args: [],
@@ -93,33 +103,43 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
-  await deploy("Caller", {
-    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
-    // Contract constructor arguments
-    args: ["0x86c66D19b87351c1AD7125889Bcb382f5baFABc7"],
-    log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
-    autoMine: true,
-  });
-  await deploy("Proxy", {
-    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
-    // Contract constructor arguments
-    args: ["0x6b8AcB313683B03ED861Cd3504BAfe8001710818"],
-    log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
-    autoMine: true,
-  });
-  await deploy("Logic", {
-    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
-    // Contract constructor arguments
-    args: [],
-    log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
-    autoMine: true,
-  });
+  // await verify(AContract.address, []);
+  // await deploy("B", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: [],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+  // await deploy("Caller", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: ["0x86c66D19b87351c1AD7125889Bcb382f5baFABc7"],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+  // await deploy("Proxy", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: ["0x6b8AcB313683B03ED861Cd3504BAfe8001710818"],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+  // await deploy("Logic", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: [],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
 };
 
 export default deployYourContract;
