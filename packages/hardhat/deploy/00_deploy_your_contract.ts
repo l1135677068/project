@@ -1,6 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { verify } from "../utils/verify";
 
 /**
  * Deploys a contract named "YourContract" using the deployer account and
@@ -85,24 +84,24 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //   // automatically mining the contract deployment transaction. There is no effect on live networks.
   //   autoMine: true,
   // });
-  await deploy("YourToken", {
+  await deploy("MyCrossBridgeToken", {
     from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
     // Contract constructor arguments
-    args: [],
+    args: [100000],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
-  await deploy("MultiCall", {
-    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
-    // Contract constructor arguments
-    args: [],
-    log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
-    autoMine: true,
-  });
+  // await deploy("MultiCall", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: [],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
   // await verify(AContract.address, []);
   // await deploy("B", {
   //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
