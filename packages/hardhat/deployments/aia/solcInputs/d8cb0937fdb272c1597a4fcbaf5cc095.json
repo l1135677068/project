@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Donate.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\ncontract Donate {\n\taddress public owner;\n\tmapping(address => uint256) public donateAddress;\n\tevent SendEtherFromCall(address to);\n\n\tconstructor() {\n\t\towner = msg.sender;\n\t}\n\n\tfunction showBalance() public view returns (uint256) {\n\t\treturn address(this).balance;\n\t}\n\n\tfunction donate() public payable {\n\t\trequire(msg.value > 0, \"Not Enough Ehter\");\n\t\tdonateAddress[msg.sender] = msg.value;\n\t}\n\n\tmodifier OnlyOwner() {\n\t\trequire(msg.sender == owner, \"Not Owner\");\n\t\t_;\n\t}\n\n\tfunction transferEther(\n\t\taddress payable _to,\n\t\tuint256 _amount\n\t) public OnlyOwner {\n\t\trequire(address(this).balance >= _amount, \"Insufficent Balance\");\n\t\t_to.transfer(address(this).balance);\n\t}\n\n\tfunction sendEtherFromCall(address _to) public payable OnlyOwner {\n\t\t(bool sent, ) = _to.call{ value: msg.value }(\"\");\n\t\temit SendEtherFromCall(_to);\n\t\trequire(sent, \"sent fail\");\n\t}\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

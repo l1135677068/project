@@ -75,6 +75,15 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //   // automatically mining the contract deployment transaction. There is no effect on live networks.
   //   autoMine: true,
   // });
+  await deploy("Donate", {
+    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
   // await deploy("A", {
   //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
   //   // Contract constructor arguments
@@ -102,15 +111,15 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //   // automatically mining the contract deployment transaction. There is no effect on live networks.
   //   autoMine: true,
   // });
-  await deploy("Dex", {
-    from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
-    // Contract constructor arguments
-    args: ["0x5041dfa0364C1A6F5417aD68BA64d154B449AaCB", "0xa21b3dC204cD773bbE8795059aa00F435871f603"],
-    log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
-    autoMine: true,
-  });
+  // await deploy("Dex", {
+  //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
+  //   // Contract constructor arguments
+  //   args: ["0x5041dfa0364C1A6F5417aD68BA64d154B449AaCB", "0xa21b3dC204cD773bbE8795059aa00F435871f603"],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
   // await deploy("MultiCall", {
   //   from: "0x6080D00fc35A843eBeA436B4E2244fEE552595a6",
   //   // Contract constructor arguments
